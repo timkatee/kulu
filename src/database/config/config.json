@@ -1,0 +1,59 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "dateStrings": true,
+      "typeCast": true
+    },
+    "timezone": "+00:00",
+    "define": {
+      "timestamps": false,
+      "underscored": true
+    },
+    "logging": true,
+    "migrationStorageTableName": "sequelize_meta",
+    "seederStorageTableName": "sequelize_data"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "dateStrings": true,
+      "typeCast": true
+    },
+    "timezone": "+00:00",
+    "define": {
+      "timestamps": false,
+      "underscored": true
+    },
+    "logging": true,
+    "migrationStorageTableName": "sequelize_meta",
+    "seederStorageTableName": "sequelize_data"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "dateStrings": true,
+      "typeCast": true
+    },
+    "timezone": "+00:00",
+    "define": {
+      "timestamps": false,
+      "underscored": true
+    },
+    "logging": false,
+    "migrationStorageTableName": "sequelize_meta",
+    "seederStorageTableName": "sequelize_data"
+  }
+}
