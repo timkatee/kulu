@@ -11,8 +11,12 @@
     },
     "timezone": "+00:00",
     "define": {
-      "timestamps": false,
-      "underscored": true
+      "timestamps": true,
+      "underscored": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at",
+      "createdBy": "created_by",
+      "updatedBy": "updated_by"
     },
     "logging": true,
     "migrationStorageTableName": "sequelize_meta",
@@ -31,7 +35,11 @@
     "timezone": "+00:00",
     "define": {
       "timestamps": false,
-      "underscored": true
+      "underscored": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at",
+      "createdBy": "created_by",
+      "updatedBy": "updated_by"
     },
     "logging": true,
     "migrationStorageTableName": "sequelize_meta",
@@ -50,7 +58,11 @@
     "timezone": "+00:00",
     "define": {
       "timestamps": false,
-      "underscored": true
+      "underscored": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at",
+      "createdBy": "created_by",
+      "updatedBy": "updated_by"
     },
     "logging": false,
     "migrationStorageTableName": "sequelize_meta",

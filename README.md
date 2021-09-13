@@ -1,7 +1,7 @@
 # nodejs-graphql-base
 A GraphQL implementation of a NodeJS API GW leveraging Sequelize ORM
 
-# Application Base Structure
+## Application Base Structure
  **src** <br>
 |__ **bin** - _[start script]_<br> 
 |__ **database** _[Sequelize specific implementations & database models]_<br>
@@ -18,3 +18,9 @@ A GraphQL implementation of a NodeJS API GW leveraging Sequelize ORM
 **.gitignore**<br>
 **nodemon.json**<br>
 **package.json**<br>
+
+## Database Schema
+![img.png](img.png)
+### Sequelize model generation
+#### Organizations
+
