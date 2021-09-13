@@ -26,7 +26,7 @@ A GraphQL implementation of a NodeJS API GW leveraging Sequelize ORM
 ### Sequelize model generation
 #### By using **sequelize-cli**
 
-> Model files & migration files can be generated using **sequelize-cli** .
+> Model files & migration files can be generated using **sequelize-cli**.
 > 
 > For purpose of this project, find below sample commands to effect the above schema in sequelize models.
 
