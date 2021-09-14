@@ -1,0 +1,8 @@
+type User{
+    id:Int!,
+    created_at:Date,
+    updated_at:Date,
+    full_names:String,
+    organization_id:Int,
+    status:Boolean
+}

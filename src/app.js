@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const graphqlServer = require('./graphql')
 
 
 const app = express();
@@ -28,5 +29,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+async function startApolloServer() {
+  await graphqlServer.start();
+  graphqlServer.applyMiddleware({ app });
+}
+
+startApolloServer().then(r => console.log(`GraphQL now served at : ${graphqlServer.graphqlPath}`))
 
 module.exports = app;

@@ -1,0 +1,7 @@
+type Organization{
+    id:Int!,
+    created_at:Date,
+    updated_at:Date,
+    description:String,
+    status:Boolean
+}

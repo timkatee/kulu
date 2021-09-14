@@ -1,0 +1,13 @@
+scalar Date
+scalar Object
+
+#root query
+type Query{
+    Organization(id:Int):Organization
+    UserRole(id:Int):UserRole
+    User(id:Int):User
+    #
+#    Users:[User]
+#    UserRoles:[UserRole]
+#    Organizations:[Organization]
+}
