@@ -1,8 +1,16 @@
-type User{
+type User implements SchemaDefaults{
     id:Int!,
-    created_at:Date,
-    updated_at:Date,
     full_names:String,
     organization_id:Int,
+    # implement interface
+    created_at:Date,
+    updated_at:Date,
+    status:Boolean
+}
+
+input UserInput{
+    id:Int,
+    full_names:String!,
+    organization_id:Int!,
     status:Boolean
 }

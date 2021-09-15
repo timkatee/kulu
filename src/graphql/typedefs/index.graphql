@@ -1,13 +1,27 @@
 scalar Date
 scalar Object
-
+#
+interface SchemaDefaults{
+    created_at:Date,
+    updated_at:Date,
+    status:Boolean
+}
 #root query
 type Query{
-    Organization(id:Int):Organization
-    UserRole(id:Int):UserRole
+    # users
     User(id:Int):User
-    #
-#    Users:[User]
-#    UserRoles:[UserRole]
-#    Organizations:[Organization]
+    Users:[User]
+    # organizations
+    Organization(id:Int):Organization
+    Organizations:[Organization]
+}
+
+#root mutation
+type Mutation{
+    # user
+    createUser(user:UserInput!):User!
+    updateUser(user:UserInput!):User!
+    # organization
+    createOrganization(organization:OrganizationInput):Organization!
+    updateOrganization(organization:OrganizationInput):Organization!
 }

@@ -1,8 +1,0 @@
-type UserRole{
-    id:Int!,
-    created_at:Date,
-    updated_at:Date,
-    role_name:String,
-    organization_id:Int,
-    status:Boolean
-}

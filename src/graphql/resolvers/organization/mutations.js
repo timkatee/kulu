@@ -1,16 +1,16 @@
 let GraphQLDb = require("../../../components/commons/GraphQLDb")
-let graphQlDb = new GraphQLDb('Users')
+let graphQlDb = new GraphQLDb('Organizations')
 
 module.exports = {
-    createUser : async(parent, args, context, info) => {
+    createOrganization : async(parent, args, context, info) => {
         //
-        graphQlDb.recordPayload = args.user
+        graphQlDb.recordPayload = args.organization
         //
         return await graphQlDb.mutation("CREATE")
     },
-    updateUser : async(parent, args, context, info) => {
+    updateOrganization : async(parent, args, context, info) => {
         //
-        graphQlDb.recordPayload = args.user
+        graphQlDb.recordPayload = args.organization
         //
         return await graphQlDb.mutation("UPDATE")
     },

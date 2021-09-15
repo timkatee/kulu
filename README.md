@@ -20,7 +20,7 @@ A GraphQL implementation of a NodeJS API GW leveraging Sequelize ORM
 **package.json**<br>
 
 ## Sample database schema
-![img.png](img.png)
+![img_1.png](img_1.png)
 ### Database creation
 >  npx sequelize-cli db:create
 ### Sequelize model generation
@@ -38,9 +38,6 @@ A GraphQL implementation of a NodeJS API GW leveraging Sequelize ORM
 
 > npx sequelize-cli model:generate --name Users --attributes full_names:STRING,organization_id:INTEGER,user_role_id:INTEGER,status:INTEGER --file-name User --underscored
 
-#### UserRoles
-
-> npx sequelize-cli model:generate --name UserRoles --attributes role_name:STRING,organization_id:INTEGER,status:INTEGER --file-name UserRole --underscored 
 
 #### By using **sequelize-auto**
 
