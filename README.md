@@ -1,4 +1,4 @@
-# nodejs-graphql-base
+# GraphQL x Sequelize API Framework
 A GraphQL implementation of a NodeJS API GW leveraging Sequelize ORM
 
 ## Application Base Structure
