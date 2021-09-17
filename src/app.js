@@ -29,7 +29,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+// custom -> start apollo server
 async function startApolloServer() {
   await graphqlServer.start();
   graphqlServer.applyMiddleware({ app });
