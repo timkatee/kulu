@@ -1,6 +1,10 @@
 # GraphQL x Sequelize API Framework
 A GraphQL implementation of a NodeJS API GW leveraging Sequelize ORM
 
+## Pre-requisites
+
+Knowledge of GraphQL (https://graphql.org/) implementation and Sequelize (https://sequelize.org/master/) will be key.
+
 ## Application Base Structure
  **src** <br>
 |__ **bin** - _[start script]_<br> 
