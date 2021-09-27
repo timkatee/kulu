@@ -3,7 +3,8 @@ A GraphQL implementation of a NodeJS API GW leveraging Sequelize ORM
 
 ## Pre-requisites
 
-Knowledge of GraphQL (https://graphql.org/) implementation and Sequelize (https://sequelize.org/master/) will be key.
+1. Knowledge of GraphQL (https://graphql.org/) implementation.
+2. Understanding of ORM's and specifically, Sequelize,  (https://sequelize.org/master/).
 
 ## Application Base Structure
  **src** <br>
@@ -22,13 +23,22 @@ Knowledge of GraphQL (https://graphql.org/) implementation and Sequelize (https:
 **.gitignore**<br>
 **nodemon.json**<br>
 **package.json**<br>
+## Installation and setup guide
+### Application setup
+#### 1. Dependency installation
+After cloning the repo or downloading the project, install npm dependencies from NPM by running the following command.
+> npm install <br>
+> 
+It's recommended to use a forked version of  **sequelize-cli** that allows tweaking of model file-names. (https://github.com/timkatee/cli)
+> unzip sequelize-cli.zip -d node_modules/
 
-## Sample database schema
+### Sample database setup
+#### Sample  schema
 ![img_1.png](img_1.png)
-### Database creation
+#### Database creation
 >  npx sequelize-cli db:create
-### Sequelize model generation
-#### By using **sequelize-cli**
+#### Sequelize model generation
+##### By using **sequelize-cli**
 
 > Model files & migration files can be generated using **sequelize-cli**.
 > 
@@ -48,7 +58,7 @@ Knowledge of GraphQL (https://graphql.org/) implementation and Sequelize (https:
 > In-case database is already created, model files can be generated using **sequelize-uato**
 > > sequelize-auto -o "./src/models/Database/models" -d database_development -h localhost -u root -p 3306 -e mysql -l es6 --cm p --cf p --cp l
 
-### Sequelize migrations
+#### Sequelize migrations
 
 Once the model files & migration files have been generated from the above steps, the below command can be executed to ensure that tables are setup appropriately in database.
 
