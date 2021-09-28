@@ -14,7 +14,6 @@ class GraphQLDb extends BaseDbModel {
             this.queryOptions = args.seqQueryOptions ? args.seqQueryOptions : {}
         }
         //
-        console.log(await this.read(mode))
         return await this.read(mode)
     }
 
