@@ -10,10 +10,10 @@ interface SchemaDefaults{
 type Query{
     # users
     User(id:Int):User
-    Users:[User]
+    Users(seqQueryOptions:Object):[User]
     # organizations
     Organization(id:Int):Organization
-    Organizations:[Organization]
+    Organizations(seqQueryOptions:Object):[Organization]
 }
 
 #root mutation
