@@ -46,17 +46,17 @@ It's recommended to use a forked version of  **sequelize-cli** that allows tweak
 
 #### Organizations
 
-> npx sequelize-cli model:generate --name Organizations --attributes description:STRING,status:INTEGER --file-name Organization --underscored
+> npx sequelize-cli model:generate --name Organizations --attributes description:STRING,status:INTEGER --file-name Organizations --underscored
 
 #### Users
 
-> npx sequelize-cli model:generate --name Users --attributes full_names:STRING,organization_id:INTEGER,user_role_id:INTEGER,status:INTEGER --file-name User --underscored
+> npx sequelize-cli model:generate --name Users --attributes full_names:STRING,organization_id:INTEGER,user_role_id:INTEGER,status:INTEGER --file-name Users --underscored
 
 
 #### By using **sequelize-auto**
 
 > In-case database is already created, model files can be generated using **sequelize-uato**
-> > sequelize-auto -o "./src/models/Database/models" -d database_development -h localhost -u root -p 3306 -e mysql -l es6 --cm p --cf p --cp l
+> > sequelize-auto -o "./src/database/models/" -d database_development -h 127.0.0.1 -u root -p 3306 -x 12345678 -e mysql -l es6 --cm p --cf p --cp l
 
 #### Sequelize migrations
 
