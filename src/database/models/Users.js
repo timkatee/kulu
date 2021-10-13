@@ -1,56 +1,27 @@
-const Sequelize = require('sequelize');
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  return Users.init(sequelize, DataTypes);
-}
-
-class Users extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-  super.init({
-    id: {
-      autoIncrement: true,
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true
-    },
-    full_names: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    organization_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    user_role_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    status: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      allowNull: false
+  class Users extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
     }
+  }
+  Users.init({
+    full_names: DataTypes.STRING,
+    organization_id: DataTypes.INTEGER,
+    user_role_id: DataTypes.INTEGER,
+    status: DataTypes.INTEGER
   }, {
     sequelize,
-    tableName: 'Users',
-    timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
-      },
-    ]
+    modelName: 'Users',
+    underscored: true,
   });
   return Users;
-  }
-}
+};
