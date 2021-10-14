@@ -1,5 +1,7 @@
 const { Op } = require("sequelize");
 const BaseDbModel = require('../base/BaseDbModel')
+const Utilities = require('./Utilities')
+
 
 class GraphQLDb extends BaseDbModel {
     constructor(model_name) {
@@ -13,12 +15,8 @@ class GraphQLDb extends BaseDbModel {
                 id: args.id ? args.id : 0
             }
         }else{
-            this.queryOptions = args.seqQueryOptions ? args.seqQueryOptions : {}
+            this.queryOptions = Utilities.unquoteJsonObjectProperties(args.seqQueryOptions ? args.seqQueryOptions : {})
         }
-        // sanitize
-        console.log(this.queryOptions)
-        this.sanitizeQueryOptions()
-        console.log(this.queryOptions)
         //
         return await this.read(mode)
     }
@@ -33,28 +31,6 @@ class GraphQLDb extends BaseDbModel {
                 return await this.delete()
             default:
                 return {message: 'No mutation action specified!'}
-        }
-    }
-
-    /***
-     * Helper functions
-     */
-    sanitizeQueryOptions(){
-        // convert to javascript object to expose operators
-        this.queryOptions = this.toJsonObject(this.queryOptions)
-    }
-
-    toJsonObject(jsonString){
-        try{
-            return JSON.parse(JSON.stringify(this.queryOptions), (key, value)=>{
-                if(key.contains('Op')){
-                    return;
-                }
-                return value
-            })
-        }catch (e) {
-            console.log(e.message)
-            return jsonString
         }
     }
 }
