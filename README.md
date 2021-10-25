@@ -32,13 +32,13 @@ After cloning the repo or downloading the project, install npm dependencies from
 It's recommended to use a forked version of  **sequelize-cli** that allows tweaking of model file-names. (https://github.com/timkatee/cli)
 > unzip sequelize-cli.zip -d node_modules/
 
-### Sample database setup
-#### Sample  schema
+## Sample database setup
+### Sample  schema
 ![img_1.png](img_1.png)
-#### Database creation
+## Database creation
 >  npx sequelize-cli db:create
-#### Sequelize model generation
-##### By using **sequelize-cli**
+### Sequelize model generation
+###1. By using **sequelize-cli**
 
 > Model files & migration files can be generated using **sequelize-cli**.
 > 
@@ -52,14 +52,15 @@ It's recommended to use a forked version of  **sequelize-cli** that allows tweak
 
 > npx sequelize-cli model:generate --name Users --attributes full_names:STRING,organization_id:INTEGER,user_role_id:INTEGER,status:INTEGER --file-name Users --underscored
 
-
-#### By using **sequelize-auto**
-
-> In-case database is already created, model files can be generated using **sequelize-uato**
-> > sequelize-auto -o "./src/database/models/" -d database_development -h 127.0.0.1 -u root -p 3306 -x 12345678 -e mysql -l es6 --cm p --cf p --cp l -a ./src/database/config/seq_auto_options.json
-
 #### Sequelize migrations
 
 Once the model files & migration files have been generated from the above steps, the below command can be executed to ensure that tables are setup appropriately in database.
 
 > npx sequelize-cli db:migrate
+
+###2. By using **sequelize-auto**
+
+> In-case database is already created, model files can be generated using **sequelize-uato**
+> > sequelize-auto -o "./src/database/models/" -d database_development -h 127.0.0.1 -u root -p 3306 -x 12345678 -e mysql -l es6 --cm p --cf p --cp l -a ./src/database/config/seq_auto_options.json
+
+
