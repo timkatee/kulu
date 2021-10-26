@@ -58,7 +58,7 @@ Once the model files & migration files have been generated from the above steps,
 
 > npx sequelize-cli db:migrate
 
-###2. By using **sequelize-auto**
+### 2. By using **sequelize-auto**
 
 > In-case database is already created, model files can be generated using **sequelize-uato**
 > > sequelize-auto -o "./src/database/models/" -d database_development -h 127.0.0.1 -u root -p 3306 -x 12345678 -e mysql -l es6 --cm p --cf p --cp l -a ./src/database/config/seq_auto_options.json
