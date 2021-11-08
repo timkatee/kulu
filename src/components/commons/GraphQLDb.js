@@ -10,7 +10,7 @@ class GraphQLDb extends BaseDbModel {
 
     async query(parent, args, context, info, mode) {
         //
-        if (mode === 'single') {
+        if (mode === 'single' && Object.keys(this.queryOptions).length === 0) {
             this.queryOptions['where'] = {
                 id: args.id ? args.id : 0
             }
