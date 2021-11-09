@@ -14,8 +14,8 @@ class GraphQLDb extends BaseDbModel {
             this.queryOptions['where'] = {
                 id: args.id ? args.id : 0
             }
-        }else{
-            this.queryOptions = Utilities.unquoteJsonObjectProperties(args.seqQueryOptions ? args.seqQueryOptions : {})
+        }else if(mode === "all"){
+            this.queryOptions = {...this.queryOptions,...Utilities.unquoteJsonObjectProperties(args.seqQueryOptions ? args.seqQueryOptions : {})}
         }
         //
         return await this.read(mode)

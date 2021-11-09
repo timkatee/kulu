@@ -4,7 +4,7 @@ let db = require('../../database/models')
 class BaseDbModel {
     //
     modelName = ""
-    queryOptions = {}
+    queryOptions = {limit:25}
     recordPayload = {id: null}
 
     //
