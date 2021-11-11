@@ -14,7 +14,7 @@ class GraphQLDb extends BaseDbModel {
             // if where clause is empty try to acquire unique id from args else
             // use the defined where clause from the resolver. Useful for relational resolve fields
             // which use foreign key for single object fetches
-            if ('where' in this.queryOptions && Object.keys(this.queryOptions.where).length === 0) {
+            if (!('where' in this.queryOptions)) {
                 this.queryOptions['where'] = {
                     id: args.id ? args.id : 0
                 }
@@ -23,8 +23,8 @@ class GraphQLDb extends BaseDbModel {
         } else if (mode === "all") {
             this.queryOptions = {...this.queryOptions, ...Utilities.unquoteJsonObjectProperties(args.seqQueryOptions ? args.seqQueryOptions : {})}
         } else {
-            //give nothing if non of the above is satisfied
-            this.queryOptions = {where: {id: 0}}
+            // if no mode is selected, we shall always give nothing
+            return
         }
         //
         return await this.read(mode)
