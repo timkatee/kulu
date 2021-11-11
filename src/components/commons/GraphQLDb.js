@@ -1,4 +1,4 @@
-const { Op } = require("sequelize");
+const {Op} = require("sequelize");
 const BaseDbModel = require('../base/BaseDbModel')
 const Utilities = require('./Utilities')
 
@@ -10,12 +10,21 @@ class GraphQLDb extends BaseDbModel {
 
     async query(parent, args, context, info, mode) {
         //
-        if (mode === 'single' && Object.keys(this.queryOptions).length === 0) {
-            this.queryOptions['where'] = {
-                id: args.id ? args.id : 0
+        if (mode === 'single') {
+            // if where clause is empty try to acquire unique id from args else
+            // use the defined where clause from the resolver. Useful for relational resolve fields
+            // which use foreign key for single object fetches
+            if ('where' in this.queryOptions && Object.keys(this.queryOptions.where).length === 0) {
+                this.queryOptions['where'] = {
+                    id: args.id ? args.id : 0
+                }
             }
-        }else if(mode === "all"){
-            this.queryOptions = {...this.queryOptions,...Utilities.unquoteJsonObjectProperties(args.seqQueryOptions ? args.seqQueryOptions : {})}
+
+        } else if (mode === "all") {
+            this.queryOptions = {...this.queryOptions, ...Utilities.unquoteJsonObjectProperties(args.seqQueryOptions ? args.seqQueryOptions : {})}
+        } else {
+            //give nothing if non of the above is satisfied
+            this.queryOptions = {where: {id: 0}}
         }
         //
         return await this.read(mode)
