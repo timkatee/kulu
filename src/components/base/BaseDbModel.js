@@ -20,7 +20,7 @@ class BaseDbModel {
     //
     async read(mode = 'all') {
         if (mode === 'single') {
-            if (Object.keys(this.queryOptions).length === 0) // useful for update mutations which don't have 'other' wheres
+            if (!('where' in this.queryOptions)) // useful for update mutations which don't have 'other' wheres
                 this.queryOptions.where = {id: this.recordPayload.id}
             return db[this.modelName].findOne(this.queryOptions).catch((err) => err);
         } else {
