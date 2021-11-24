@@ -4,7 +4,7 @@ let db = require('../../database/models')
 class BaseDbModel {
     //
     modelName = ""
-    queryOptions = {limit:25}
+    queryOptions = {limit: 25}
     recordPayload = {id: null}
 
     //
@@ -37,6 +37,16 @@ class BaseDbModel {
     //
     async delete() {
         return db[this.modelName].destroy(this.queryOptions).catch((err) => err);
+    }
+
+    //
+    async rawQuery(query, options) {
+        return db.sequelize.query(query, {model: db[this.modelName], ...options}).catch((err) => err)
+    }
+
+    // useful for instances where use of the actual sequelize model instance is needed
+    modelInstance() {
+        return db[this.modelName]
     }
 
 }

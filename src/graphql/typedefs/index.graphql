@@ -8,12 +8,11 @@ interface SchemaDefaults{
 }
 #root query
 type Query{
+    # node metadata
+    NodeMetaDataDb(nodeName:String!,seqQueryOptions:Object):NodeMetaDataDb
     # users
     User(id:Int):User
     Users(seqQueryOptions:Object):[User]
-    # organizations
-    Organization(id:Int):Organization
-    Organizations(seqQueryOptions:Object):[Organization]
 }
 
 #root mutation
@@ -22,6 +21,4 @@ type Mutation{
     createUser(user:UserInput!):User!
     updateUser(user:UserInput!):User!
     # organization
-    createOrganization(organization:OrganizationInput):Organization!
-    updateOrganization(organization:OrganizationInput):Organization!
 }
