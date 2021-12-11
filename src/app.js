@@ -39,5 +39,9 @@ async function startApolloServer() {
 }
 
 startApolloServer().then(r => console.log(`GraphQL now served at : ${graphqlServer.graphqlPath}`))
+// redirect to graphql server if home is visited...
+app.get('/', (req, res) => {
+    res.status(200).redirect(graphqlServer.graphqlPath)
+})
 
 module.exports = app;
