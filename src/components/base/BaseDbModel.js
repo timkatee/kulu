@@ -41,7 +41,7 @@ class BaseDbModel {
 
     //
     async rawQuery(query, options) {
-        return initModels.sequelize.query(query, {model: initModels[this.modelName], ...options}).catch((err) => err)
+        return db.sequelize.query(query, {model: initModels[this.modelName], ...options}).catch((err) => err)
     }
 
     // useful for instances where use of the actual sequelize model instance is needed
