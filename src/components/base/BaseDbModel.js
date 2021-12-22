@@ -45,8 +45,8 @@ class BaseDbModel {
     }
 
     // useful for instances where use of the actual sequelize model instance is needed
-    modelInstance() {
-        return initModels[this.modelName]
+    modelInstance(modelName = undefined) {
+        return initModels[modelName ?  modelName : this.modelName]
     }
 
 }
