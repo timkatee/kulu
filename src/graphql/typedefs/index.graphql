@@ -1,6 +1,12 @@
 scalar Date
 scalar Object
 #
+enum CrudOperations{
+    CREATE,
+    UPDATED,
+    DELETE
+}
+#
 interface SchemaDefaults{
     created_at:Date,
     updated_at:Date,
@@ -18,7 +24,6 @@ type Query{
 #root mutation
 type Mutation{
     # user
-    createUser(user:UserInput!):User!
-    updateUser(user:UserInput!):User!
+    createEditUser(user:UserInput!,type:CrudOperations):User!
     # organization
 }
