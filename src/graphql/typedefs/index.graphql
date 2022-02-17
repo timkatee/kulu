@@ -3,7 +3,7 @@ scalar Object
 #
 enum CrudOperations{
     CREATE,
-    UPDATED,
+    UPDATE,
     DELETE
 }
 #
