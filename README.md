@@ -1,5 +1,5 @@
 # GraphQL x Sequelize API Framework
-A GraphQL implementation of a NodeJS API GW leveraging Sequelize ORM
+A GraphQL implementation of a NodeJS API Framework leveraging Sequelize ORM
 
 ## Pre-requisites
 
