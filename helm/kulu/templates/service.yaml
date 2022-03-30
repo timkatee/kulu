@@ -6,6 +6,7 @@ metadata:
     name: kulu
     tier: service
 spec:
+  type: NodePort
   selector:
     app.kubernetes.io/name: kulu
     app.kubernetes.io/tier: backend
