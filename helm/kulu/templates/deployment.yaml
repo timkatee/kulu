@@ -21,3 +21,22 @@ spec:
           ports:
             - containerPort: 4000
               name: kulu-http-port
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_HOST
+                  name: kulu-cm
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_PORT
+                  name: kulu-cm
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: DB_PASSWORD
+                  name: kulu-secrets
+
+
+
