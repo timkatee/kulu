@@ -31,3 +31,8 @@ spec:
                 name: kulu-svc
                 port:
                   number: 80
+  tls:
+    -
+      hosts:
+        - minikube.internal.kulu
+      secretName: kulu-tls-secret
