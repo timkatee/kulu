@@ -1,3 +1,4 @@
+{{- if .Values.ingress.enabled}}
 ---
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
@@ -32,7 +33,8 @@ spec:
                 port:
                   number: 80
   tls:
-    -
-      hosts:
+    - hosts:
         - minikube.internal.kulu
       secretName: kulu-tls-secret
+
+  {{- end}}

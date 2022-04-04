@@ -1,42 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kulu
+  name: {{ .Release.Name}}
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicaCount}}
   selector:
     matchLabels:
-      app.kubernetes.io/name: kulu
+      app.kubernetes.io/name: {{ .Release.Name}}
       app.kubernetes.io/tier: backend
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: kulu
+        app.kubernetes.io/name: {{ .Release.Name}}
         app.kubernetes.io/tier: backend
     spec:
       containers:
-        - image: timkatee/kulu:0.0.1-alpha
-          imagePullPolicy: Always
-          name: kulu-backend
+        - image: {{ .Values.image.repository}}:{{ .Values.image.tag}}
+          imagePullPolicy: {{ .Values.image.pullPolicy}}
+          name: {{ .Release.Name}}
           ports:
             - containerPort: 4000
-              name: kulu-http-port
+              name: {{ .Release.Name}}-http
           env:
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
                   key: DB_HOST
-                  name: kulu-cm
+                  name: {{ .Release.Name}}-cm
             - name: DB_PORT
               valueFrom:
                 configMapKeyRef:
                   key: DB_PORT
-                  name: kulu-cm
+                  name: {{ .Release.Name}}-cm
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: DB_PASSWORD
-                  name: kulu-secrets
+                  name: {{ .Release.Name}}-secrets
 
 
 
