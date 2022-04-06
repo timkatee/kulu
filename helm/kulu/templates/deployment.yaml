@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name}}
+spec:
+  replicas: {{ .Values.replicaCount}}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Release.Name}}
+      app.kubernetes.io/tier: backend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Release.Name}}
+        app.kubernetes.io/tier: backend
+    spec:
+      containers:
+        - image: {{ .Values.image.repository}}:{{ .Values.image.tag}}
+          imagePullPolicy: {{ .Values.image.pullPolicy}}
+          name: {{ .Release.Name}}
+          ports:
+            - containerPort: 4000
+              name: {{ .Release.Name}}-http
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_HOST
+                  name: {{ .Release.Name}}-cm
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_PORT
+                  name: {{ .Release.Name}}-cm
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: DB_PASSWORD
+                  name: {{ .Release.Name}}-secrets
+
+
+

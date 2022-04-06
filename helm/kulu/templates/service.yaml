@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name}}-svc
+  labels:
+    name: {{ .Release.Name}}
+    tier: service
+spec:
+  type: {{ .Values.service.type}}
+  selector:
+    app.kubernetes.io/name: {{ .Release.Name}}
+    app.kubernetes.io/tier: backend
+  ports:
+    - port: {{ .Values.service.port}}
+      protocol: TCP
+      targetPort: {{ .Release.Name}}-http
