@@ -32,6 +32,11 @@ spec:
                 configMapKeyRef:
                   key: DB_PORT
                   name: {{ .Release.Name}}-cm
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_NAME
+                  name: {{ .Release.Name}}-cm
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
