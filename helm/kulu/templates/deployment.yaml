@@ -68,6 +68,7 @@ spec:
               path: /.well-known/apollo/server-health
               port: http
           readinessProbe:
+            initialDelaySeconds: 10
             httpGet:
               path: /.well-known/apollo/server-health
               port: http
