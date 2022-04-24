@@ -49,7 +49,7 @@ async function startApolloServer() {
 }
 
 startApolloServer().then(r => console.log(`GraphQL now served at : ${graphqlServer.graphqlPath}`)).catch(err=>{
-    console.log(`Encountered an error when starting graphql server : ${e.message}`)
+    console.log(`Encountered an error when starting graphql server : ${err.message}`)
     graphqlServer.graphqlPath = '/graphql'
 })
 // redirect to graphql server if home is visited...
