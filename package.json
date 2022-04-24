@@ -1,19 +1,23 @@
 {
-  "name": "nodejs-graphql-base",
-  "version": "0.0.0",
+  "name": "kulu",
+  "version": "0.0.1-alpha",
   "private": true,
   "scripts": {
     "start": "node src/bin/www"
   },
   "dependencies": {
+    "@apollo/subgraph": "^2.0.1",
+    "@graphql-tools/load-files": "^6.5.3",
+    "@graphql-tools/merge": "^8.2.10",
     "@graphql-tools/schema": "^8.2.0",
-    "apollo-server-express": "^3.1.2",
+    "apollo-server-core": "^3.6.7",
+    "apollo-server-express": "^3.6.7",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "graphql": "^15.5.1",
+    "graphql": "^16.3.0",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "keycloak-connect": "^17.0.1",
