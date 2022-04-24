@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name}}-svc
+  name: {{ include "kulu.fullname" . }}-svc
   labels:
-    name: {{ .Release.Name}}
-    tier: service
+    {{- include "kulu.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type}}
-  selector:
-    app.kubernetes.io/name: {{ .Release.Name}}
-    app.kubernetes.io/tier: backend
+  type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port}}
+    - port: {{ .Values.service.port }}
+      targetPort: http
       protocol: TCP
-      targetPort: {{ .Release.Name}}-http
+      name: http
+  selector:
+    {{- include "kulu.selectorLabels" . | nindent 4 }}

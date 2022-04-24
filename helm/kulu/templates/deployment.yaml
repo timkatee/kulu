@@ -1,52 +1,88 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name}}
+  name: {{ include "kulu.fullname" . }}
+  labels:
+    {{- include "kulu.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount}}
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ .Release.Name}}
-      app.kubernetes.io/tier: backend
+      {{- include "kulu.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
-        app.kubernetes.io/name: {{ .Release.Name}}
-        app.kubernetes.io/tier: backend
+        {{- include "kulu.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "kulu.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - image: {{ .Values.image.repository}}:{{ .Values.image.tag}}
-          imagePullPolicy: {{ .Values.image.pullPolicy}}
-          name: {{ .Release.Name}}
-          ports:
-            - containerPort: 4000
-              name: {{ .Release.Name}}-http
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
                   key: DB_HOST
-                  name: {{ .Release.Name}}-cm
+                  name: {{ include "kulu.fullname" . }}-cm
             - name: DB_PORT
               valueFrom:
                 configMapKeyRef:
                   key: DB_PORT
-                  name: {{ .Release.Name}}-cm
+                  name: {{ include "kulu.fullname" . }}-cm
             - name: DB_NAME
               valueFrom:
                 configMapKeyRef:
                   key: DB_NAME
-                  name: {{ .Release.Name}}-cm
+                  name: {{ include "kulu.fullname" . }}-cm
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
                   key:  DB_USERNAME
-                  name: {{ .Release.Name}}-secrets
+                  name: {{ include "kulu.fullname" . }}-secrets
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: DB_PASSWORD
-                  name: {{ .Release.Name}}-secrets
-
-
-
+                  name: {{ include "kulu.fullname" . }}-secrets
+          ports:
+            - name: http
+              containerPort: 4000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /.well-known/apollo/server-health
+              port: http
+          readinessProbe:
+            initialDelaySeconds: 10
+            httpGet:
+              path: /.well-known/apollo/server-health
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
