@@ -1,21 +1,17 @@
 const { join } = require('path');
-const { readdirSync, readFileSync } = require('fs');
-const { makeExecutableSchema } = require('@graphql-tools/schema');
-let resolvers = require('./resolvers/')
+const { mergeResolvers,mergeTypeDefs } = require('@graphql-tools/merge');
+const { buildSubgraphSchema } = require('@apollo/subgraph');
+const { loadFilesSync } = require("@graphql-tools/load-files");
+//
 
-const gqlFiles = readdirSync(join(__dirname, './typedefs'));
+const typeDefs = loadFilesSync(join(__dirname, './typedefs'));
+const resolvers = loadFilesSync(join(__dirname, './resolvers'));
 
-let typeDefs = '';
-
-gqlFiles.forEach((file) => {
-    typeDefs += readFileSync(join(__dirname, './typedefs', file), {
-        encoding: 'utf8',
-    });
+const schema = buildSubgraphSchema({
+    typeDefs: typeDefs,
+    resolvers: mergeResolvers(resolvers)
 });
 
-const schema = makeExecutableSchema({
-    typeDefs,
-    resolvers
-});
+
 
 module.exports = schema;
