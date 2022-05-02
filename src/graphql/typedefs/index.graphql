@@ -1,5 +1,5 @@
 scalar Date
-scalar Object
+scalar JSON
 #
 enum CrudOperations{
     CREATE,
@@ -15,10 +15,10 @@ interface SchemaDefaults{
 #root query
 type Query{
     # node metadata
-    NodeMetaDataDb(nodeName:String!,seqQueryOptions:Object):NodeMetaDataDb
+    NodeMetaDataDb(nodeName:String!,seqQueryOptions:JSON):NodeMetaDataDb
     # users
     User(id:Int):User
-    Users(seqQueryOptions:Object):[User]
+    Users(seqQueryOptions:JSON):[User]
 }
 
 #root mutation
