@@ -21,10 +21,12 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "keycloak-connect": "^17.0.1",
+    "mocha": "^10.0.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5",
-    "sequelize-auto": "^0.8.4"
+    "sequelize-auto": "^0.8.4",
+    "supertest": "^6.2.3"
   },
   "devDependencies": {
     "sequelize-cli": "^6.2.0"
