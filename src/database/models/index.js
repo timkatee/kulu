@@ -10,6 +10,13 @@ const db = {};
 
 let sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {...config,...{host:process.env.DB_HOST}});
 
+async function createTable(){
+  await sequelize.sync()
+
+}
+//
+if (process.env?.INIT_TABLES === 1)
+  createTable().then(r => console.log("All models were synchronized successfully."))
 
 fs
   .readdirSync(__dirname)

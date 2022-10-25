@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
 
 class SequelizeMeta extends Sequelize.Model {
   static init(sequelize, DataTypes) {
-  super.init({
+  return super.init({
     name: {
       type: DataTypes.STRING(255),
       allowNull: false,
@@ -14,7 +14,9 @@ class SequelizeMeta extends Sequelize.Model {
   }, {
     sequelize,
     tableName: 'sequelize_meta',
-    timestamps: false,
+    timestamps: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
     indexes: [
       {
         name: "PRIMARY",
@@ -34,6 +36,5 @@ class SequelizeMeta extends Sequelize.Model {
       },
     ]
   });
-  return SequelizeMeta;
   }
 }
