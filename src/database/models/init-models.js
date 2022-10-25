@@ -1,18 +1,21 @@
-var DataTypes = require("sequelize").DataTypes;
-var _Organizations = require("./Organizations");
-var _Users = require("./Users");
-var _SequelizeMeta = require("./SequelizeMeta");
+const DataTypes = require("sequelize").DataTypes;
+const _Organizations = require("./Organizations");
+const _UserRoles = require("./UserRoles");
+const _SequelizeMeta = require("./SequelizeMeta");
+const _Users = require("./Users");
 
 function initModels(sequelize) {
-  var Organizations = _Organizations(sequelize, DataTypes);
-  var Users = _Users(sequelize, DataTypes);
-  var SequelizeMeta = _SequelizeMeta(sequelize, DataTypes);
+  const Organizations = _Organizations(sequelize, DataTypes);
+  const UserRoles = _UserRoles(sequelize, DataTypes);
+  const SequelizeMeta = _SequelizeMeta(sequelize, DataTypes);
+  const Users = _Users(sequelize, DataTypes);
 
 
   return {
     Organizations,
-    Users,
+    UserRoles,
     SequelizeMeta,
+    Users,
   };
 }
 module.exports = initModels;
