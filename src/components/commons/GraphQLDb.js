@@ -15,8 +15,11 @@ class GraphQLDb extends BaseDbModel {
             // use the defined where clause from the resolver. Useful for relational resolve fields
             // which use foreign key for single object fetches
             if (!('where' in this.queryOptions)) {
+                // enable publish=1 by default unless overridden
+                let publish = args?.ignore_publish ? {} : {publish: 1}
                 this.queryOptions['where'] = {
-                    id: args.id ? args.id : 0
+                    id: args.id ? args.id : 0,
+                    ...publish
                 }
             }
 
