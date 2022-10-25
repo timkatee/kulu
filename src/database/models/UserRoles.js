@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  return Organizations.init(sequelize, DataTypes);
+  return UserRoles.init(sequelize, DataTypes);
 }
 
-class Organizations extends Sequelize.Model {
+class UserRoles extends Sequelize.Model {
   static init(sequelize, DataTypes) {
   return super.init({
     id: {
@@ -12,8 +12,12 @@ class Organizations extends Sequelize.Model {
       allowNull: false,
       primaryKey: true
     },
-    description: {
+    role_name: {
       type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    organization_id: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     status: {
@@ -22,7 +26,7 @@ class Organizations extends Sequelize.Model {
     }
   }, {
     sequelize,
-    tableName: 'Organizations',
+    tableName: 'UserRoles',
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
