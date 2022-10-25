@@ -14,7 +14,9 @@ async function createTable(){
   await sequelize.sync()
 
 }
-createTable().then(r => console.log("All models were synchronized successfully."))
+//
+if (process.env?.INIT_TABLES === 1)
+  createTable().then(r => console.log("All models were synchronized successfully."))
 
 fs
   .readdirSync(__dirname)
