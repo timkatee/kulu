@@ -13,6 +13,7 @@ const apolloServer = new ApolloServer({
     //     })
     // ],
     playground: true,
+    introspection: process.env.APPLICATION_ENV !== "production"
 });
 
 module.exports = apolloServer
