@@ -17,7 +17,7 @@ class GraphQLDb extends BaseDbModel {
         const parsedInfo = parseResolveInfo(info)
         const {fields} = simplifyParsedResolveInfoFragmentWithType(parsedInfo, info.returnType.ofType)
         const acquiredFields = Object.keys(fields).filter((item) => Object.keys(this.modelInstance().getAttributes()).includes(item))
-        if (acquiredFields && acquiredFields instanceof Array) {
+        if (acquiredFields && acquiredFields instanceof Array && acquiredFields.length > 0) {
             this.queryOptions = {...this.queryOptions, ...{attributes: acquiredFields}}
         }
         //
