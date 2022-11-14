@@ -15,7 +15,7 @@ async function createTable(){
 
 }
 //
-if (process.env?.INIT_TABLES === 1)
+if (process.env?.DB_INIT_TABLES === '1')
   createTable().then(r => console.log("All models were synchronized successfully."))
 
 fs

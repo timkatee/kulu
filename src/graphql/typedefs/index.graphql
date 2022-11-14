@@ -10,7 +10,7 @@ enum CrudOperations{
 interface SchemaDefaults{
     created_at:Date,
     updated_at:Date,
-    status:Boolean
+    status:Int
 }
 #root query
 type Query{
