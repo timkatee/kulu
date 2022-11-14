@@ -7,12 +7,14 @@ const {GraphQLError} = require('graphql');
 class BaseDbModel {
     //
     modelName = ""
+    modelAttributes = {}
     queryOptions = {limit: 25}
     recordPayload = {id: null}
 
     //
     constructor(model_name) {
         this.modelName = model_name
+        this.modelAttributes = this.modelInstance().getAttributes
     }
 
     //
