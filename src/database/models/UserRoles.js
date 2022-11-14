@@ -23,6 +23,11 @@ class UserRoles extends Sequelize.Model {
     status: {
       type: DataTypes.INTEGER,
       allowNull: true
+    },
+    publish: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: 1
     }
   }, {
     sequelize,
