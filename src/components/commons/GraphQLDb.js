@@ -1,4 +1,5 @@
 const {Op} = require("sequelize");
+const db = require('../../database/models')
 const {parseResolveInfo, simplifyParsedResolveInfoFragmentWithType} = require("graphql-parse-resolve-info");
 
 const BaseDbModel = require('../base/BaseDbModel')
@@ -12,9 +13,10 @@ class GraphQLDb extends BaseDbModel {
 
     async query(parent, args, context, info, mode) {
         // inject only required fields into query attributes.
+        // validate if the fields are model attributes
         const parsedInfo = parseResolveInfo(info)
         const {fields} = simplifyParsedResolveInfoFragmentWithType(parsedInfo, info.returnType.ofType)
-        const acquiredFields = Object.keys(fields)
+        const acquiredFields = Object.keys(fields).filter((item) => Object.keys(this.modelInstance().getAttributes()).includes(item))
         if (acquiredFields && acquiredFields instanceof Array) {
             this.queryOptions = {...this.queryOptions, ...{attributes: acquiredFields}}
         }
