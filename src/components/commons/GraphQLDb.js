@@ -16,7 +16,11 @@ class GraphQLDb extends BaseDbModel {
         // validate if the fields are model attributes
         const parsedInfo = parseResolveInfo(info)
         const {fields} = simplifyParsedResolveInfoFragmentWithType(parsedInfo, info.returnType.ofType)
-        const acquiredFields = Object.keys(fields).filter((item) => Object.keys(this.modelInstance().getAttributes()).includes(item))
+        const acquiredFields = Object.keys(fields)
+            // pick the actual type field names as alias might also be passed
+            .map((item)=>fields[item]?.name)
+            // remove fields which are not part of model attributes
+            .filter((item) => Object.keys(this.modelInstance().getAttributes()).includes(item))
         if (acquiredFields && acquiredFields instanceof Array && acquiredFields.length > 0) {
             this.queryOptions = {...this.queryOptions, ...{attributes: acquiredFields}}
         }
