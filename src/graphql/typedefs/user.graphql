@@ -5,12 +5,12 @@ type User implements SchemaDefaults{
     # implement interface
     created_at:Date,
     updated_at:Date,
-    status:Boolean
+    status:Int
 }
 
 input UserInput{
     id:Int,
     full_names:String!,
     organization_id:Int!,
-    status:Boolean
+    status:Int
 }
