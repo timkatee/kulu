@@ -15,10 +15,10 @@ class GraphQLDb extends BaseDbModel {
         // inject only required fields into query attributes.
         // validate if the fields are model attributes
         const parsedInfo = parseResolveInfo(info)
-        const {fields} = simplifyParsedResolveInfoFragmentWithType(parsedInfo, info.returnType.ofType)
+        const {fields} = simplifyParsedResolveInfoFragmentWithType(parsedInfo, info.returnType)
         const acquiredFields = Object.keys(fields)
             // pick the actual type field names as alias might also be passed
-            .map((item)=>fields[item]?.name)
+            .map((item) => fields[item]?.name)
             // remove fields which are not part of model attributes
             .filter((item) => Object.keys(this.modelInstance().getAttributes()).includes(item))
         if (acquiredFields && acquiredFields instanceof Array && acquiredFields.length > 0) {
@@ -37,6 +37,8 @@ class GraphQLDb extends BaseDbModel {
                     ...publish
                 }
             }
+            // update limit to 1
+            this.queryOptions = {...this.queryOptions, ...{limit: 1}}
 
         } else if (mode === "all") {
             this.queryOptions = {...this.queryOptions, ...Utilities.unquoteJsonObjectProperties(args.seqQueryOptions ? args.seqQueryOptions : {})}
