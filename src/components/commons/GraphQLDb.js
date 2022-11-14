@@ -1,4 +1,6 @@
 const {Op} = require("sequelize");
+const {parseResolveInfo, simplifyParsedResolveInfoFragmentWithType} = require("graphql-parse-resolve-info");
+
 const BaseDbModel = require('../base/BaseDbModel')
 const Utilities = require('./Utilities')
 
@@ -9,11 +11,18 @@ class GraphQLDb extends BaseDbModel {
     }
 
     async query(parent, args, context, info, mode) {
+        // inject only required fields into query attributes.
+        const parsedInfo = parseResolveInfo(info)
+        const {fields} = simplifyParsedResolveInfoFragmentWithType(parsedInfo, info.returnType.ofType)
+        const acquiredFields = Object.keys(fields)
+        if (acquiredFields && acquiredFields instanceof Array) {
+            this.queryOptions = {...this.queryOptions, ...{attributes: acquiredFields}}
+        }
         //
         if (mode === 'single') {
             // if where clause is empty try to acquire unique id from args else
-            // use the defined where clause from the resolver. Useful for relational resolve fields
-            // which use foreign key for single object fetches
+            // use the defined where clause from the resolver.
+            // Useful for relational resolve fields which use foreign key for single object fetches
             if (!('where' in this.queryOptions)) {
                 // enable publish=1 by default unless overridden
                 let publish = args?.ignore_publish ? {} : {publish: 1}
