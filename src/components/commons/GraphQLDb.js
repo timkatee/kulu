@@ -11,19 +11,26 @@ class GraphQLDb extends BaseDbModel {
         super(model_name);
     }
 
+    #sanitizeQueryFields(info){
+        // support for __resolveReference to be added later for subgraph fields
+        if(info) {
+            const parsedInfo = parseResolveInfo(info)
+            const {fields} = simplifyParsedResolveInfoFragmentWithType(parsedInfo, info.returnType)
+            const acquiredFields = Object.keys(fields)
+                // pick the actual type field names as alias might also be passed
+                .map((item) => fields[item]?.name)
+                // remove fields which are not part of model attributes
+                .filter((item) => Object.keys(this.modelInstance().getAttributes()).includes(item))
+            if (acquiredFields && acquiredFields instanceof Array && acquiredFields.length > 0) {
+                this.queryOptions = {...this.queryOptions, ...{attributes: acquiredFields}}
+            }
+        }
+    }
+
     async query(parent, args, context, info, mode) {
         // inject only required fields into query attributes.
         // validate if the fields are model attributes
-        const parsedInfo = parseResolveInfo(info)
-        const {fields} = simplifyParsedResolveInfoFragmentWithType(parsedInfo, info.returnType)
-        const acquiredFields = Object.keys(fields)
-            // pick the actual type field names as alias might also be passed
-            .map((item) => fields[item]?.name)
-            // remove fields which are not part of model attributes
-            .filter((item) => Object.keys(this.modelInstance().getAttributes()).includes(item))
-        if (acquiredFields && acquiredFields instanceof Array && acquiredFields.length > 0) {
-            this.queryOptions = {...this.queryOptions, ...{attributes: acquiredFields}}
-        }
+        this.#sanitizeQueryFields(info)
         //
         if (mode === 'single') {
             // if where clause is empty try to acquire unique id from args else

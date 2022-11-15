@@ -25,7 +25,7 @@
     "mocha": "^10.0.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.3.0",
-    "sequelize": "^6.6.5",
+    "sequelize": "^6.25.5",
     "sequelize-auto": "^0.8.4",
     "supertest": "^6.2.3"
   },
