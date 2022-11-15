@@ -32,8 +32,6 @@ class GraphQLDb extends BaseDbModel {
         // validate if the fields are model attributes
         this.#sanitizeQueryFields(info)
         //
-        console.log(parent,args,context,info)
-        //
         if (mode === 'single') {
             // if where clause is empty try to acquire unique id from args else
             // use the defined where clause from the resolver.
