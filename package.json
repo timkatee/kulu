@@ -30,6 +30,9 @@
     "supertest": "^6.2.3"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.2.0"
+    "@tsconfig/node16": "^1.0.3",
+    "sequelize-cli": "^6.2.0",
+    "tsc": "^2.0.4",
+    "tsc-alias": "^1.7.1"
   }
 }
