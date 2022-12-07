@@ -1,5 +1,5 @@
 const {Op} = require("sequelize");
-const db = require('../../database/models')
+const db = require('../../infrastructure/databases/sequelize/models')
 const {parseResolveInfo, simplifyParsedResolveInfoFragmentWithType} = require("graphql-parse-resolve-info");
 
 const BaseDbModel = require('../base/BaseDbModel')
