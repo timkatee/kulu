@@ -1,6 +1,6 @@
 const {Op} = require("sequelize");
-let db = require('../../infrastructure/databases/sequelize/models')
-let initModels = require('../../infrastructure/databases/sequelize/models/init-models')(db.sequelize)
+let db = require('../../infrastructure/database/sequelize/models')
+let initModels = require('../../infrastructure/database/sequelize/models/init-models')(db.sequelize)
 const {GraphQLError} = require('graphql');
 
 
