@@ -34,6 +34,7 @@
       "@domain/*": ["domain/*"],
       "@infrastructure/*": ["infrastructure/*"],
       "@services/*": ["services/*"],
+      "@commons/*": ["commons/*"],
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
@@ -120,7 +121,7 @@
     "excludeDirectories": ["**/node_modules", "_build","**/test"],
     "excludeFiles": ["build/fileWhichChangesOften.ts","test*"]
   },
-  "exclude": ["node_modules","build"],
+  "exclude": ["node_modules","build","dist"],
   //  "include": ["src/*"],
   "extends": "@tsconfig/node16/tsconfig.json"
 }
