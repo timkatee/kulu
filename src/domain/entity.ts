@@ -1,9 +1,14 @@
-export abstract class Entity<T>{
-    public readonly id: number | undefined;
-    public readonly props : T
+import moment from 'moment';
 
-    protected constructor(id:number, props: T){
-        this.id = id
-        this.props = props
+export abstract class Entity<T> {
+    createdAt: Date | undefined
+    updatedAt: Date | undefined
+
+    protected constructor(props: Partial<T>) {
+        Object.assign(this, props)
+        // to be improved
+        this.createdAt = moment(new Date()).toDate();
+        this.updatedAt = moment(new Date()).toDate();
     }
+
 }

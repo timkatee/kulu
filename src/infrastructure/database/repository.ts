@@ -1,6 +1,6 @@
 import {prisma} from "@infrastructure/database/prisma/client";
 import {Injectable} from '@nestjs/common';
-import {IRepository, ReadModes, CrudOperations} from "@application/interfaces/repository.interface";
+import {IRepository, CrudOperations} from "@application/interfaces/repository.interface";
 import {IRepositoryFilter} from "@application/interfaces/filter.interfaces";
 import {GraphQLError} from "graphql";
 
@@ -21,12 +21,13 @@ export class Repository<T> implements IRepository<T> {
         return await prisma[this.entity].update({where: {id}, data}).catch(err => this.onError(err));
     }
 
-    // get entity or entities
-    async read(mode: ReadModes, filters: Partial<IRepositoryFilter>): Promise<T | T[]> {
-        if (mode === ReadModes.SINGLE) {
-            // @ts-ignore
-            return await prisma[this.entity].findUnique(filters).catch(err => this.onError(err));
-        }
+    // get entity
+    async readSingle(id: number): Promise<T>{
+        // @ts-ignore
+        return await prisma[this.entity].findUnique({where : {id:id}}).catch(err => this.onError(err));
+    }
+    // get entities
+    async readMany(filters: Partial<IRepositoryFilter>,metaData:any): Promise<T[]> {
         // @ts-ignore
         return await prisma[this.entity].findMany(filters).catch(err => this.onError(err));
     }

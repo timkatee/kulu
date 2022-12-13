@@ -7,35 +7,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Organizations {
-  id          Int      @id @default(autoincrement())
-  description String?  @db.VarChar(255)
-  status      Int?
-  publish     Boolean? @default(true)
-  created_at  DateTime @db.DateTime(0)
-  updated_at  DateTime @db.DateTime(0)
-}
-
-model UserRoles {
+model Users {
   id              Int      @id @default(autoincrement())
-  role_name       String?  @db.VarChar(255)
-  organization_id Int?
-  status          Int?
-  created_at      DateTime @db.DateTime(0)
-  updated_at      DateTime @db.DateTime(0)
-}
-
-model sequelize_meta {
-  name String @id @unique(map: "name") @db.VarChar(255)
-}
-
-model users {
-  id              Int      @id @default(autoincrement())
-  full_names      String?  @unique(map: "USER_UNIQUE") @db.VarChar(255)
-  organization_id Int?
-  user_role_id    Int?
-  status          Int?
-  publish         Int?
-  created_at      DateTime @db.DateTime(0)
-  updated_at      DateTime @db.DateTime(0)
+  fullName      String?  @unique(map: "USER_UNIQUE") @db.VarChar(255)
+  description    String?  @db.VarChar(255)
+  createdAt      DateTime @db.DateTime(0)
+  updatedAt      DateTime @db.DateTime(0)
 }
