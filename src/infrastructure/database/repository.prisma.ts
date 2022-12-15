@@ -1,13 +1,13 @@
 import {prisma} from "@infrastructure/database/prisma/client";
 import {Injectable} from '@nestjs/common';
-import {IRepository, CrudOperations} from "@application/interfaces/repository.interface";
-import {IRepositoryFilter} from "@application/interfaces/filter.interfaces";
+import {Repository, CrudOperations} from "@application/interfaces/repository.interface";
+import {RepositoryFilter} from "@application/interfaces/filter.interfaces";
 import {GraphQLError} from "graphql";
 import {acquireSelectFields} from "@commons/prisma.utilities";
 import {acquireRequestedGraphqlFields} from "@commons/graphql.utilities";
 
 @Injectable()
-export class Repository<T> implements IRepository<T> {
+export class RepositoryPrisma<T> implements Repository<T> {
     constructor(private entity: string) {
     }
 
@@ -30,7 +30,7 @@ export class Repository<T> implements IRepository<T> {
     }
 
     // get entities
-    async readMany(filters: Partial<IRepositoryFilter>, metaData: any): Promise<T[]> {
+    async readMany(filters: Partial<RepositoryFilter>, metaData: any): Promise<T[]> {
         let selectFields = acquireSelectFields(acquireRequestedGraphqlFields(metaData)) || undefined
         // @ts-ignore
         return await prisma[this.entity].findMany({...filters, ...{select: selectFields}}).catch(err => this.onError(err));

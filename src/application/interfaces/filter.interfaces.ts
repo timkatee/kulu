@@ -1,6 +1,6 @@
 import {Scalar} from "@nestjs/graphql/dist";
 
-export interface IRepositoryFilter {
+export interface RepositoryFilter {
     where?: any
     select?: any
     orderBy?: any
