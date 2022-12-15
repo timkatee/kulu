@@ -1,4 +1,0 @@
-type NodeMetaDataDb{
-    data_count:Int
-    data_filtered_count:Int
-}
