@@ -26,7 +26,7 @@ It's **simplistic**, and with it comes an implementation informed by different e
 #### Installation steps.
 
 1. Clone Kulu repository <br>```git clone https://github.com/timkatee/kulu.git```
-2. Install dependencies <br>```npm install```
+2. Install dependencies <br>```npm install --legacy-peer-deps```
 3. Create .env file in the root dir and add prisma database config, if mysql <br> ```DATABASE_URL='mysql://username:password@localhost:3306/database'```
 4. Run migrations for database table creation, for an existing database with tables refer to [Prisma Documentation](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-postgres) <br> ```npx prisma migrate dev```
 5. Run the project <br> ```npm run start:dev```
