@@ -24,9 +24,10 @@ export class RepositoryPrisma<T> implements Repository<T> {
     }
 
     // get entity
-    async readSingle(id: number): Promise<T> {
+    async readSingle(id: number, metaData:any): Promise<T> {
+        let selectFields = acquireSelectFields(acquireRequestedGraphqlFields(metaData)) || undefined
         // @ts-ignore
-        return await prisma[this.entity].findUnique({where: {id: id}}).catch(err => this.onError(err));
+        return await prisma[this.entity].findUnique({...{where: {id: id},...{select: selectFields}}}).catch(err => this.onError(err));
     }
 
     // get entities
