@@ -40,12 +40,10 @@
     "http-errors": "~1.6.3",
     "keycloak-connect": "^17.0.1",
     "mocha": "^10.0.0",
+    "moment": "^2.29.4",
     "morgan": "~1.9.1",
-    "mysql2": "^2.3.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.6.0",
-    "sequelize": "^6.25.5",
-    "sequelize-auto": "^0.8.4",
     "source-map-support": "^0.5.21",
     "supertest": "^6.2.3",
     "type-graphql": "^1.1.1"
@@ -53,8 +51,6 @@
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
     "@types/mocha": "^10.0.1",
-    "prisma": "^4.7.1",
-    "sequelize-cli": "^6.2.0",
     "tsc": "^2.0.4",
     "tsc-alias": "^1.7.1",
     "typescript": "^4.9.4"
