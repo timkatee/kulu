@@ -1,4 +1,4 @@
-import {IRepositoryFilter} from "@application/interfaces/filter.interfaces";
+import {RepositoryFilter} from "@application/interfaces/filter.interfaces";
 import {registerEnumType} from "@nestjs/graphql";
 
 export enum CrudOperations {
@@ -9,14 +9,14 @@ export enum CrudOperations {
 
 registerEnumType(CrudOperations, {name: 'CrudOperations'})
 
-export interface IRepository<Model> {
+export interface Repository<Model> {
     create(data: Model): Promise<Model>
 
     update(id: number, data: Partial<Model>): Promise<Model>
 
     readSingle(id: number, metaData?: any): Promise<Model>
 
-    readMany(filters: Partial<IRepositoryFilter>, metaData?: any): Promise<Model[]>
+    readMany(filters: Partial<RepositoryFilter>, metaData?: any): Promise<Model[]>
 
     delete(id: number): Promise<Model>
 

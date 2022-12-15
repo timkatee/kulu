@@ -1,9 +1,9 @@
-import {IRepositoryFilter} from "@application/interfaces/filter.interfaces"
+import {RepositoryFilter} from "@application/interfaces/filter.interfaces"
 import {Field, InputType, Int, ObjectType, PartialType} from "@nestjs/graphql/dist";
 import GraphQLJSON from "graphql-type-json";
 
 @ObjectType()
-export class RepositoryFilter implements IRepositoryFilter {
+export class RepositoryFilterModel implements RepositoryFilter {
     @Field(() => GraphQLJSON)
     cursor: any;
     @Field(() => GraphQLJSON)
@@ -21,7 +21,7 @@ export class RepositoryFilter implements IRepositoryFilter {
 }
 
 @InputType()
-export class FilterInput extends PartialType(RepositoryFilter, InputType) {
+export class FilterInput extends PartialType(RepositoryFilterModel, InputType) {
     constructor() {
         super();
         this.take = 25
