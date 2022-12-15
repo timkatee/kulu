@@ -1,5 +1,5 @@
 
-export interface IUser {
+export interface User {
     id: number | undefined,
     fullName: string | undefined,
     createdAt: Date | undefined,

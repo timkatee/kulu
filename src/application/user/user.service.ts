@@ -1,45 +1,45 @@
 import {Args, Info, InputType, Mutation, PartialType, Query, Resolver, Scalar} from '@nestjs/graphql/dist';
-import {User} from "@domain/user/user.model"
-import {CrudOperations, IRepository} from "@application/interfaces/repository.interface";
+import {UserModel} from "@domain/user/user.model"
+import {CrudOperations, Repository} from "@application/interfaces/repository.interface";
 import {FilterInput} from "@commons/repository.filter.model";
 import {Inject} from "@nestjs/common";
-import {IUser} from "@domain/user/user.interface";
+import {User} from "@domain/user/user.interface";
 import {acquireRequestedGraphqlFields} from "@commons/graphql.utilities";
 import {acquireSelectFields} from "@commons/prisma.utilities";
 
 @InputType()
-class UserInput extends PartialType(User, InputType) {
+class UserInput extends PartialType(UserModel, InputType) {
 
 }
 
-@Resolver((of: any) => User)
+@Resolver((of: any) => UserModel)
 export class UserService {
-    constructor(@Inject('IRepository') private repository: IRepository<IUser>) {
+    constructor(@Inject('Repository') private repository: Repository<User>) {
     }
 
-    @Query((returns) => User, {name: "User"})
+    @Query((returns) => UserModel, {name: "User"})
     async getUser(
         @Args('id') id: number,
         @Info() info: any
-    ): Promise<IUser> {
-        return new User(await this.repository.readSingle(id, info));
+    ): Promise<User> {
+        return new UserModel(await this.repository.readSingle(id, info));
     }
 
-    @Query((returns) => [User], {name: "Users"})
+    @Query((returns) => [UserModel], {name: "Users"})
     async getUsers(
         @Args('filters', {nullable: true}) filters: FilterInput,
         @Info() info: any
-    ): Promise<IUser[]> {
+    ): Promise<User[]> {
         let users = await this.repository.readMany(filters, info);
-        return users.map(user => new User(user))
+        return users.map(user => new UserModel(user))
     }
 
-    @Mutation((returns) => User)
+    @Mutation((returns) => UserModel)
     async createEditUser(
         @Args('userInput', {}) userInput: UserInput,
         @Args('type') type: CrudOperations,
         @Info() info: any
-    ): Promise<IUser> {
-        return await this.repository.createEdit(type, new User(userInput))
+    ): Promise<User> {
+        return await this.repository.createEdit(type, new UserModel(userInput))
     }
 }
