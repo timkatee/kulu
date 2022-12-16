@@ -1,14 +1,21 @@
-import {prisma} from "@infrastructure/database/prisma/client";
+import {prisma, PrismaClient} from "@infrastructure/database/prisma/client";
 import {Injectable} from '@nestjs/common';
 import {Repository, CrudOperations} from "@application/interfaces/repository.interface";
 import {RepositoryFilter} from "@application/interfaces/filter.interfaces";
 import {GraphQLError} from "graphql";
-import {acquireSelectFields} from "@commons/prisma.utilities";
+import {acquireSelectFields, getDataModelAttributes} from "@commons/prisma.utilities";
 import {acquireRequestedGraphqlFields} from "@commons/graphql.utilities";
 
 @Injectable()
 export class RepositoryPrisma<T> implements Repository<T> {
+    modelAttributes?: {}
+
     constructor(private entity: string) {
+        this.initialize().then(r => r).catch(err => this.onError(err));
+    }
+
+    async initialize(): Promise<void> {
+        this.modelAttributes = await getDataModelAttributes(this.entity)
     }
 
     // Create a new entity
@@ -24,15 +31,16 @@ export class RepositoryPrisma<T> implements Repository<T> {
     }
 
     // get entity
-    async readSingle(id: number, metaData:any): Promise<T> {
-        let selectFields = acquireSelectFields(acquireRequestedGraphqlFields(metaData)) || undefined
+    async readSingle(id: number, metaData: any): Promise<T> {
+        let selectFields = acquireSelectFields(acquireRequestedGraphqlFields(metaData), this.modelAttributes) || undefined
         // @ts-ignore
-        return await prisma[this.entity].findUnique({...{where: {id: id},...{select: selectFields}}}).catch(err => this.onError(err));
+        return await prisma[this.entity].findUnique({...{where: {id: id}, ...{select: selectFields}}}).catch(err => this.onError(err));
     }
 
     // get entities
     async readMany(filters: Partial<RepositoryFilter>, metaData: any): Promise<T[]> {
-        let selectFields = acquireSelectFields(acquireRequestedGraphqlFields(metaData)) || undefined
+        let selectFields = acquireSelectFields(acquireRequestedGraphqlFields(metaData), this.modelAttributes) || undefined
+        console.log(selectFields)
         // @ts-ignore
         return await prisma[this.entity].findMany({...filters, ...{select: selectFields}}).catch(err => this.onError(err));
     }

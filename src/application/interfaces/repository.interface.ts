@@ -10,13 +10,16 @@ export enum CrudOperations {
 registerEnumType(CrudOperations, {name: 'CrudOperations'})
 
 export interface Repository<Model> {
+
+    initialize?():Promise<void>
+
     create(data: Model): Promise<Model>
 
     update(id: number, data: Partial<Model>): Promise<Model>
 
-    readSingle(id: number, metaData?: any): Promise<Model>
+    readSingle(id: number, metaData?: any, model?: Model): Promise<Model>
 
-    readMany(filters: Partial<RepositoryFilter>, metaData?: any): Promise<Model[]>
+    readMany(filters: Partial<RepositoryFilter>, metaData?: any, model?: Model): Promise<Model[]>
 
     delete(id: number): Promise<Model>
 
