@@ -1,5 +1,3 @@
-import {Scalar} from "@nestjs/graphql/dist";
-
 export interface RepositoryFilter {
     where?: any
     select?: any
