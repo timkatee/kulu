@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="chore : Fixed project issues in webstorm...">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/interfaces/filter.interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/interfaces/filter.interfaces.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="arn:aws:eks:us-west-2:772013974377:cluster/uef-k8s-1" />
+    <option name="namespace" value="default" />
+  </component>
+  <component name="ProjectId" id="28ZFh6QuPyIgQ68bsFSN2gFPEgJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/graphql/typedefs" />
+      <recent name="$PROJECT_DIR$/src/graphql/resolvers" />
+      <recent name="$PROJECT_DIR$/src/database/config" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="chore : Fixed project issues in webstorm..." />
+      <created>1651416317477</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651416317477</updated>
+      <workItem from="1651416319185" duration="4424000" />
+      <workItem from="1651421011078" duration="18791000" />
+      <workItem from="1651983094204" duration="35000" />
+      <workItem from="1651983220035" duration="2128000" />
+      <workItem from="1654464027861" duration="597000" />
+      <workItem from="1655205615807" duration="11799000" />
+      <workItem from="1658812655347" duration="425000" />
+      <workItem from="1658987346337" duration="378000" />
+      <workItem from="1666517778020" duration="2815000" />
+      <workItem from="1667519539562" duration="45000" />
+      <workItem from="1667546985644" duration="2340000" />
+      <workItem from="1667618782122" duration="58000" />
+      <workItem from="1667655537765" duration="1655000" />
+      <workItem from="1667919705168" duration="6929000" />
+      <workItem from="1670854986954" duration="1599000" />
+      <workItem from="1671113609082" duration="25000" />
+      <workItem from="1671113644912" duration="11000" />
+      <workItem from="1671113659667" duration="5302000" />
+      <workItem from="1671123044795" duration="1787000" />
+      <workItem from="1671163269063" duration="91000" />
+    </task>
+    <task id="LOCAL-00001" summary="Updated application version">
+      <created>1652019061943</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652019061943</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Updated models to use the correct date updated">
+      <created>1655813210192</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655813210192</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added DeviceTransmissionsHistory field for TransmissionsHistory...">
+      <created>1655821933868</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655821933868</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added meta_data field for notifications type...">
+      <created>1655821957635</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655821957635</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat : Added fields for device &amp; assets for TransmissionsLive type...">
+      <created>1669477331319</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669477331319</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat : Updated external entity asset to use device_id key...">
+      <created>1669477371728</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669477371728</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat : Added asset &amp; device types...">
+      <created>1669477408784</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669477408784</updated>
+    </task>
+    <task id="LOCAL-00008" summary="chore : updated application version...">
+      <created>1669477483084</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669477483084</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat : Added organization fields for transmissions_live type...">
+      <created>1670855335333</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670855335333</updated>
+    </task>
+    <task id="LOCAL-00010" summary="chore : Updated application version...">
+      <created>1670855364681</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670855364682</updated>
+    </task>
+    <task id="LOCAL-00011" summary="chore : Removed unnecessary files...">
+      <created>1671123217688</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1671123217688</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat : Added field types for transmissions.live.model...">
+      <created>1671123401596</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1671123401596</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat : Removed user module from apps module...">
+      <created>1671123418101</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1671123418101</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Chore : Merged upstream kulu...">
+      <created>1671123495403</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1671123495403</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Chore : Merged upstream kulu...">
+      <created>1671123643384</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1671123643384</updated>
+    </task>
+    <task id="LOCAL-00016" summary="chore : Fixed project issues in webstorm...">
+      <created>1671163247854</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1671163247854</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated application version" />
+    <MESSAGE value="Updated models to use the correct date updated" />
+    <MESSAGE value="Added DeviceTransmissionsHistory field for TransmissionsHistory..." />
+    <MESSAGE value="Added meta_data field for notifications type..." />
+    <MESSAGE value="feat : Added fields for device &amp; assets for TransmissionsLive type..." />
+    <MESSAGE value="feat : Updated external entity asset to use device_id key..." />
+    <MESSAGE value="feat : Added asset &amp; device types..." />
+    <MESSAGE value="chore : updated application version..." />
+    <MESSAGE value="feat : Added organization fields for transmissions_live type..." />
+    <MESSAGE value="chore : Updated application version..." />
+    <MESSAGE value="chore : Removed unnecessary files..." />
+    <MESSAGE value="feat : Added field types for transmissions.live.model..." />
+    <MESSAGE value="feat : Removed user module from apps module..." />
+    <MESSAGE value="Chore : Merged upstream kulu..." />
+    <MESSAGE value="chore : Fixed project issues in webstorm..." />
+    <option name="LAST_COMMIT_MESSAGE" value="chore : Fixed project issues in webstorm..." />
+  </component>
+</project>
