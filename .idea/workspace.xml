@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="chore : Fixed project issues in webstorm...">
+    <list default="true" id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="fix(RepositoryPrisma) : Fixed an issue which caused selects to fail due to fields which are not model attributes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/interfaces/repository.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/interfaces/repository.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/user/user.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/user/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commons/prisma.utilities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/prisma.utilities.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/database/prisma/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/database/prisma/client.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/infrastructure/database/repository.prisma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/database/repository.prisma.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +77,7 @@
       <workItem from="1671113659667" duration="5302000" />
       <workItem from="1671123044795" duration="1787000" />
       <workItem from="1671163269063" duration="170000" />
-      <workItem from="1671170501284" duration="7848000" />
+      <workItem from="1671170501284" duration="8687000" />
     </task>
     <task id="LOCAL-00001" summary="Updated application version">
       <created>1652019061943</created>
@@ -204,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671163366716</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix(RepositoryPrisma) : Fixed an issue which caused selects to fail due to fields which are not model attributes.">
+      <created>1671185083995</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1671185083995</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +239,7 @@
     <MESSAGE value="feat : Removed user module from apps module..." />
     <MESSAGE value="Chore : Merged upstream kulu..." />
     <MESSAGE value="chore : Fixed project issues in webstorm..." />
-    <option name="LAST_COMMIT_MESSAGE" value="chore : Fixed project issues in webstorm..." />
+    <MESSAGE value="fix(RepositoryPrisma) : Fixed an issue which caused selects to fail due to fields which are not model attributes." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(RepositoryPrisma) : Fixed an issue which caused selects to fail due to fields which are not model attributes." />
   </component>
 </project>
