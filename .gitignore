@@ -104,5 +104,3 @@ dist
 .tern-port
 # package-lock
 package-lock.json
-#intelij
-.idea
