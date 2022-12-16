@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="feat : Added ability to get data for requested fields for read single...">
+    <list default="true" id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="chore : Fixed project issues in webstorm...">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/interfaces/filter.interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/interfaces/filter.interfaces.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +53,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d496e896-d5ea-4b4a-b7ad-5e9479de9cc1" name="Changes" comment="" />
+      <changelist id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="chore : Fixed project issues in webstorm..." />
       <created>1651416317477</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -75,6 +77,7 @@
       <workItem from="1671113644912" duration="11000" />
       <workItem from="1671113659667" duration="5302000" />
       <workItem from="1671123044795" duration="1787000" />
+      <workItem from="1671163269063" duration="91000" />
     </task>
     <task id="LOCAL-00001" summary="Updated application version">
       <created>1652019061943</created>
@@ -181,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671123643384</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="chore : Fixed project issues in webstorm...">
+      <created>1671163247854</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1671163247854</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +224,7 @@
     <MESSAGE value="feat : Added field types for transmissions.live.model..." />
     <MESSAGE value="feat : Removed user module from apps module..." />
     <MESSAGE value="Chore : Merged upstream kulu..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Chore : Merged upstream kulu..." />
+    <MESSAGE value="chore : Fixed project issues in webstorm..." />
+    <option name="LAST_COMMIT_MESSAGE" value="chore : Fixed project issues in webstorm..." />
   </component>
 </project>
