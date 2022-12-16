@@ -30,7 +30,7 @@ export class UserService {
         @Args('filters', {nullable: true}) filters: FilterInput,
         @Info() info: any
     ): Promise<User[]> {
-        let users = await this.repository.readMany(filters, info);
+        let users = await this.repository.readMany(filters, info, UserModel.prototype);
         return users.map(user => new UserModel(user))
     }
 

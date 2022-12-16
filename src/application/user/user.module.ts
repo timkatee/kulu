@@ -5,7 +5,7 @@ import {RepositoryPrisma} from "@infrastructure/database/repository.prisma"
 @Module({
     providers: [UserService, {
         provide: 'Repository',
-        useValue: new RepositoryPrisma('users')
+        useValue: new RepositoryPrisma('Users')
     }],
 })
 
