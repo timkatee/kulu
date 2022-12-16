@@ -40,7 +40,6 @@ export class RepositoryPrisma<T> implements Repository<T> {
     // get entities
     async readMany(filters: Partial<RepositoryFilter>, metaData: any): Promise<T[]> {
         let selectFields = acquireSelectFields(acquireRequestedGraphqlFields(metaData), this.modelAttributes) || undefined
-        console.log(selectFields)
         // @ts-ignore
         return await prisma[this.entity].findMany({...filters, ...{select: selectFields}}).catch(err => this.onError(err));
     }
