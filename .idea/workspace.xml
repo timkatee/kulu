@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="chore : Updated docker file...">
+    <list default="true" id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="fix : Fixed an issue that caused prisma to fail if no graphql fields are identified...">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commons/prisma.utilities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/prisma.utilities.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/interfaces/repository.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/interfaces/repository.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/database/repository.prisma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/database/repository.prisma.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -210,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671185083995</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fix : Fixed an issue that caused prisma to fail if no graphql fields are identified...">
+      <created>1671409624529</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1671409624529</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +254,7 @@
     <MESSAGE value="Chore : Merged upstream kulu..." />
     <MESSAGE value="chore : Fixed project issues in webstorm..." />
     <MESSAGE value="fix(RepositoryPrisma) : Fixed an issue which caused selects to fail due to fields which are not model attributes." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(RepositoryPrisma) : Fixed an issue which caused selects to fail due to fields which are not model attributes." />
+    <MESSAGE value="fix : Fixed an issue that caused prisma to fail if no graphql fields are identified..." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix : Fixed an issue that caused prisma to fail if no graphql fields are identified..." />
   </component>
 </project>

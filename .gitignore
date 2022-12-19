@@ -105,4 +105,4 @@ dist
 # package-lock
 package-lock.json
 # intelij
-.idea
+.idea/

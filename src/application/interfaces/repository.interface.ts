@@ -11,7 +11,7 @@ registerEnumType(CrudOperations, {name: 'CrudOperations'})
 
 export interface Repository<Model> {
 
-    initialize?():Promise<void>
+    initialize?(): Promise<void>
 
     create(data: Model): Promise<Model>
 
@@ -24,6 +24,8 @@ export interface Repository<Model> {
     delete(id: number): Promise<Model>
 
     createEdit(type: CrudOperations, data: Partial<Model>): Promise<Model>
+
+    clientInstance?(entityKey: string): any
 
     onError?(payload: any): void
 }

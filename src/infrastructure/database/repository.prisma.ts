@@ -68,6 +68,11 @@ export class RepositoryPrisma<T> implements Repository<T> {
 
     }
 
+    // return model instance
+    clientInstance(entityKey:string): any{
+        // @ts-ignore
+        return prisma[entityKey]
+    }
     // error handler
     onError(payload: any): void {
         throw new GraphQLError(payload.parent || payload.message, {
