@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="fix : Fixed an issue that caused prisma to fail if no graphql fields are identified...">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/interfaces/repository.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/interfaces/repository.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/user/user.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/infrastructure/database/repository.prisma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/database/repository.prisma.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
