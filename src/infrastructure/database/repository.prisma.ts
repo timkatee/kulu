@@ -31,10 +31,16 @@ export class RepositoryPrisma<T> implements Repository<T> {
     }
 
     // get entity
-    async readSingle(id: number, metaData: any): Promise<T> {
+    async readSingle(id: number, metaData: any, params: any): Promise<T> {
         let selectFields = acquireSelectFields(acquireRequestedGraphqlFields(metaData), this.modelAttributes) || undefined
+        // Todo
+        // for scenarios where unique id is not {id}
+        let whereOverride = {}
+        if (params?.notId) {
+            whereOverride = {where: {id: undefined, [params.idKey]: id}}
+        }
         // @ts-ignore
-        return await prisma[this.entity].findUnique({...{where: {id: id}, ...{select: selectFields}}}).catch(err => this.onError(err));
+        return await prisma[this.entity].findUnique({...{where: {id: id}, ...{select: selectFields}, ...whereOverride}}).catch(err => this.onError(err));
     }
 
     // get entities
@@ -69,10 +75,11 @@ export class RepositoryPrisma<T> implements Repository<T> {
     }
 
     // return model instance
-    clientInstance(entityKey:string): any{
+    clientInstance(entityKey: string): any {
         // @ts-ignore
         return prisma[entityKey]
     }
+
     // error handler
     onError(payload: any): void {
         throw new GraphQLError(payload.parent || payload.message, {
