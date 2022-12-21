@@ -34,43 +34,28 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: DB_HOST
+            - name: DATABASE_URL
               valueFrom:
                 configMapKeyRef:
-                  key: DB_HOST
+                  key: DATABASE_URL
                   name: {{ include "kulu.fullname" . }}-cm
-            - name: DB_PORT
+            - name: PRISMA_DATA_MODEL_PATH
               valueFrom:
                 configMapKeyRef:
-                  key: DB_PORT
+                  key: PRISMA_DATA_MODEL_PATH
                   name: {{ include "kulu.fullname" . }}-cm
-            - name: DB_NAME
-              valueFrom:
-                configMapKeyRef:
-                  key: DB_NAME
-                  name: {{ include "kulu.fullname" . }}-cm
-            - name: DB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  key:  DB_USERNAME
-                  name: {{ include "kulu.fullname" . }}-secrets
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: DB_PASSWORD
-                  name: {{ include "kulu.fullname" . }}-secrets
           ports:
             - name: http
               containerPort: 4000
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /.well-known/apollo/server-health
+              path: /graphql
               port: http
           readinessProbe:
             initialDelaySeconds: 10
             httpGet:
-              path: /.well-known/apollo/server-health
+              path: /graphql
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

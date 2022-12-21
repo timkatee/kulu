@@ -3,7 +3,6 @@ kind: ConfigMap
 metadata:
   name: {{ include "kulu.fullname" . }}-cm
 data:
-  DB_HOST: "localhost"
-  DB_PORT: "3306"
-  DB_NAME: "database_development"
+  DATABASE_URL: "mysql://root:12345678@localhost:3306/database_development"
+  PRISMA_DATA_MODEL_PATH: "./src/infrastructure/database/prisma/schema.prisma"
 
