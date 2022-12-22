@@ -6,9 +6,9 @@ replicaCount: 1
 
 image:
   repository: timkatee/kulu
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.1-alpha"
+  tag: "0.1.0-alpha-3"
 
 imagePullSecrets: []
 nameOverride: ""
