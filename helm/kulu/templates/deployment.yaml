@@ -50,12 +50,12 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /graphql
+              path: /.well-known/apollo/server-health
               port: http
           readinessProbe:
             initialDelaySeconds: 10
             httpGet:
-              path: /graphql
+              path: /.well-known/apollo/server-health
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

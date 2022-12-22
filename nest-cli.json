@@ -1,4 +1,13 @@
 {
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src"
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "tsConfigPath": "./tsconfig.json",
+    "assets": [
+      {
+        "include": "**/**/infrastructure/**/*.prisma",
+        "outDir": "dist/src/"
+      }
+    ]
+  }
 }

@@ -5,4 +5,5 @@ metadata:
 data:
   DATABASE_URL: "mysql://root:12345678@localhost:3306/database_development"
   PRISMA_DATA_MODEL_PATH: "./src/infrastructure/database/prisma/schema.prisma"
+  NODE_ENV: "production"
 

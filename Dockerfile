@@ -54,7 +54,7 @@ USER node
 
 FROM node:18.12.1-bullseye As production
 
-WORKDIR /usr/src/app
+WORKDIR .
 # Copy the bundled code from the build stage to the production image
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist .
