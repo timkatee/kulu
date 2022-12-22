@@ -43,6 +43,7 @@
     "mocha": "^10.0.0",
     "moment": "^2.29.4",
     "morgan": "~1.9.1",
+    "prisma": "^4.8.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.6.0",
     "source-map-support": "^0.5.21",
@@ -50,6 +51,7 @@
     "type-graphql": "^1.1.1"
   },
   "devDependencies": {
+    "@nestjs/cli": "^9.1.5",
     "@tsconfig/node16": "^1.0.3",
     "@types/mocha": "^10.0.1",
     "tsc": "^2.0.4",
