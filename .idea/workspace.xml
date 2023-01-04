@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="fix : Fixed an issue that caused prisma to fail if no graphql fields are identified...">
+    <list default="true" id="a4f19234-60c7-401e-bdd4-0bc500c2b7cd" name="Changes" comment="feat : Added an option to reference id from prisma that might be of a different key...">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/interfaces/repository.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/interfaces/repository.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/user/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/database/repository.prisma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/database/repository.prisma.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671409624529</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="feat : Added an option to reference id from prisma that might be of a different key...">
+      <created>1671542221699</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1671542221699</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,6 +260,7 @@
     <MESSAGE value="chore : Fixed project issues in webstorm..." />
     <MESSAGE value="fix(RepositoryPrisma) : Fixed an issue which caused selects to fail due to fields which are not model attributes." />
     <MESSAGE value="fix : Fixed an issue that caused prisma to fail if no graphql fields are identified..." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix : Fixed an issue that caused prisma to fail if no graphql fields are identified..." />
+    <MESSAGE value="feat : Added an option to reference id from prisma that might be of a different key..." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : Added an option to reference id from prisma that might be of a different key..." />
   </component>
 </project>
