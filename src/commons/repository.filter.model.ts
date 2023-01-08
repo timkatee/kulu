@@ -18,6 +18,7 @@ export class RepositoryFilterModel implements RepositoryFilter {
     take: number = 25;
     @Field(() => GraphQLJSON)
     where: any;
+    @Field(() => Boolean)
     all: Boolean = false;
 }
 
@@ -25,10 +26,6 @@ export class RepositoryFilterModel implements RepositoryFilter {
 export class FilterInput extends PartialType(RepositoryFilterModel, InputType) {
     constructor() {
         super();
-        if (!this.all) {
-            this.take = 25
-        } else {
-            this.take = undefined
-        }
+        this.take = 25
     }
 }
