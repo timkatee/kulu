@@ -6,4 +6,5 @@ export interface RepositoryFilter {
     skip?: number
     take?: number
     cursor: any
+    all: Boolean
 }
