@@ -1,0 +1,16 @@
+version: "3"
+services:
+  db:
+    # If you use M1 or M2 Mac, uncommnet the below line
+      # platform: linux/x86_64
+    image: mysql:5.7
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: kulu
+      MYSQL_PASSWORD: kulu
+    ports:
+      - "3306:3306"
+volumes:
+  mysql:
