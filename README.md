@@ -1,3 +1,5 @@
+NB : Project is in active development phase and should be used as a demonstration of the described concepts. 
+
 ## Kulu - GraphQL API Framework (NestJS, Apollo, Prisma)
 
 GraphQL API implementation inspired by **Domain Driven Design** & **Clean Architecture**. It demonstrates **Inversion Of Control** through **Dependency Injection**  a **NodeJS** 
