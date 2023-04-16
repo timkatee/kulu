@@ -6,7 +6,6 @@ import {
   PartialType,
   Query,
   Resolver,
-  Scalar,
 } from "@nestjs/graphql/dist";
 import { UserModel } from "@domain/user/user.model";
 import {
@@ -14,15 +13,14 @@ import {
   Repository,
 } from "@application/interfaces/repository.interface";
 import { FilterInput } from "@commons/repository.filter.model";
-import { Inject } from "@nestjs/common";
+import {Inject, Injectable} from "@nestjs/common";
 import { User } from "@domain/user/user.interface";
-import { acquireRequestedGraphqlFields } from "@commons/graphql.utilities";
-import { acquireSelectFields } from "@commons/prisma.utilities";
 
 @InputType()
 class UserInput extends PartialType(UserModel, InputType) {}
 
 @Resolver((of: any) => UserModel)
+@Injectable()
 export class UserService {
   constructor(@Inject("Repository") private repository: Repository<User>) {}
 
@@ -33,7 +31,7 @@ export class UserService {
 
   @Query((returns) => [UserModel], { name: "Users" })
   async getUsers(
-    @Args("filters", { nullable: true }) filters: FilterInput,
+    @Args("filters") filters: FilterInput,
     @Info() info: any
   ): Promise<User[]> {
     const users = await this.repository.readMany(filters, info);
