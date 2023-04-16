@@ -1,12 +1,12 @@
-import { RepositoryFilter } from "@application/interfaces/filter.interfaces";
+import { RepositoryFilter } from '@application/interfaces/filter.interfaces';
 import {
   Field,
   InputType,
   Int,
   ObjectType,
   PartialType,
-} from "@nestjs/graphql/dist";
-import GraphQLJSON from "graphql-type-json";
+} from '@nestjs/graphql/dist';
+import GraphQLJSON from 'graphql-type-json';
 
 @ObjectType()
 export class RepositoryFilterModel implements RepositoryFilter {

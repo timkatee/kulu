@@ -1,23 +1,23 @@
-import { getDMMF } from "@prisma/internals";
+import { getDMMF } from '@prisma/internals';
 
 export const getDataModelAttributes = async (modelName: string) => {
   const dmmf = await getDMMF({
     datamodelPath: process.env.PRISMA_DATA_MODEL_PATH,
   }).then((r) => r);
   return dmmf.datamodel.models
-    .find((model) => model.name === modelName)
-    ?.fields.reduce(
-      (o, key) => ({
-        ...o,
-        [key?.name]: key?.name,
-      }),
-      {}
-    );
+      .find((model) => model.name === modelName)
+      ?.fields.reduce(
+          (o, key) => ({
+            ...o,
+            [key?.name]: key?.name,
+          }),
+          {},
+      );
 };
 
 export const acquireSelectFields = (
-  fields: string[],
-  modelAttributes: any
+    fields: string[],
+    modelAttributes: any,
 ): any => {
   //
   if (fields.length > 0) {
