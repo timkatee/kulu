@@ -2,7 +2,7 @@
 # BUILD FOR LOCAL DEVELOPMENT
 ###################
 
-FROM node:18.12.1-bullseye As development
+FROM node:18.12.1-bullseye-slim As development
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -11,9 +11,11 @@ WORKDIR /usr/src/app
 # A wildcard is used to ensure copying both package.json AND package-lock.json (when available).
 # Copying this first prevents re-running npm install on every code change.
 COPY --chown=node:node package*.json ./
+COPY --chown=node:node pnpm*.yaml ./
 
 # Install app dependencies using the `npm ci` command instead of `npm install`
-RUN npm ci --legacy-peer-deps
+RUN npm install -g pnpm
+RUN pnpm i
 
 # Bundle app source
 COPY --chown=node:node . .
@@ -25,11 +27,12 @@ USER node
 # BUILD FOR PRODUCTION
 ###################
 
-FROM node:18.12.1-bullseye As build
+FROM node:18.12.1-bullseye-slim As build
 
 WORKDIR /usr/src/app
 
 COPY --chown=node:node package*.json ./
+COPY --chown=node:node pnpm*.yaml ./
 
 # In order to run `npm run build` we need access to the Nest CLI which is a dev dependency. In the previous development stage we ran `npm ci` which installed all dependencies, so we can copy over the node_modules directory from the development image
 COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
@@ -43,7 +46,8 @@ RUN npm run build
 ENV NODE_ENV production
 
 # Running `npm ci` removes the existing node_modules directory and passing in --only=production ensures that only the production dependencies are installed. This ensures that the node_modules directory is as optimized as possible
-RUN npm ci --only=production --legacy-peer-deps && npm cache clean --force
+RUN npm install -g pnpm
+RUN pnpm i --prod
 RUN npx prisma generate
 
 USER node
@@ -52,7 +56,7 @@ USER node
 # PRODUCTION
 ###################
 
-FROM node:18.12.1-bullseye As production
+FROM node:18.12.1-bullseye-slim As production
 
 WORKDIR .
 # Copy the bundled code from the build stage to the production image
@@ -60,5 +64,6 @@ COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist .
 
 EXPOSE 4000
+EXPOSE 3000
 # Start the server using the production build
-CMD [ "node", "./src/main.js" ]
+CMD [ "node", "./src/main.js"]
