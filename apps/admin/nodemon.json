@@ -1,0 +1,4 @@
+{
+  "ext": "js jade json css pug graphql",
+  "ignore": ["public","node_modules"]
+}
