@@ -1,69 +1,35 @@
-###################
-# BUILD FOR LOCAL DEVELOPMENT
-###################
+FROM node:18.12.1-bullseye-slim AS builder
+# Set working directory
+WORKDIR /app
+RUN npm install turbo -g
+COPY . .
+RUN turbo prune --scope=@kulu/admin  --docker
 
-FROM node:18.12.1-bullseye-slim As development
+# Add lockfile and package.json's of isolated subworkspace
+FROM node:18.12.1-bullseye-slim AS installer
+WORKDIR /app
 
-# Create app directory
-WORKDIR /usr/src/app
+# First install the dependencies (as they change less often)
+COPY --from=builder /app/out/full/ .
+RUN npm install pnpm -g
+#RUN npm install @prisma/client -g
+RUN pnpm install
 
-# Copy application dependency manifests to the container image.
-# A wildcard is used to ensure copying both package.json AND package-lock.json (when available).
-# Copying this first prevents re-running npm install on every code change.
-COPY --chown=node:node package*.json ./
-COPY --chown=node:node pnpm*.yaml ./
+# Build the project
+#COPY --from=builder /app/out/full/ .
+#RUN pnpm --filter=@kulu/admin run prisma:dbpull
+#RUN pnpm --filter=@kulu/admin run prisma:generate
+RUN pnpm --filter=@kulu/admin run build
 
-# Install app dependencies using the `npm ci` command instead of `npm install`
-RUN npm install -g pnpm
-RUN pnpm i
 
-# Bundle app source
-COPY --chown=node:node . .
+FROM node:18.12.1-bullseye-slim AS runner
+WORKDIR /app
 
-# Use the node user from the image (instead of the root user)
-USER node
-
-###################
-# BUILD FOR PRODUCTION
-###################
-
-FROM node:18.12.1-bullseye-slim As build
-
-WORKDIR /usr/src/app
-
-COPY --chown=node:node package*.json ./
-COPY --chown=node:node pnpm*.yaml ./
-
-# In order to run `npm run build` we need access to the Nest CLI which is a dev dependency. In the previous development stage we ran `npm ci` which installed all dependencies, so we can copy over the node_modules directory from the development image
-COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
-
-COPY --chown=node:node . .
-
-# Run the build command which creates the production bundle
-RUN npm run build
-
-# Set NODE_ENV environment variable
-ENV NODE_ENV production
-
-# Running `npm ci` removes the existing node_modules directory and passing in --only=production ensures that only the production dependencies are installed. This ensures that the node_modules directory is as optimized as possible
-RUN npm install -g pnpm
-RUN pnpm i --prod
-RUN npx prisma generate
-
-USER node
-
-###################
-# PRODUCTION
-###################
-
-FROM node:18.12.1-bullseye-slim As production
-
-WORKDIR .
-# Copy the bundled code from the build stage to the production image
-COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
-COPY --chown=node:node --from=build /usr/src/app/dist .
+COPY --from=installer /app/ .
+RUN npm install pnpm -g
+RUN pnpm install --frozen-lockfile --prod
 
 EXPOSE 4000
 EXPOSE 3000
-# Start the server using the production build
-CMD [ "node", "./src/main.js"]
+
+CMD [ "node", "./apps/admin/dist/src/main.js"]

@@ -3,7 +3,7 @@ FROM node:18.12.1-bullseye-slim AS builder
 WORKDIR /app
 RUN npm install turbo -g
 COPY . .
-RUN turbo prune --scope=@uefora/gateway  --docker
+RUN turbo prune --scope=@kulu/gateway  --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM node:18.12.1-bullseye-slim AS installer
@@ -17,9 +17,9 @@ RUN pnpm install
 
 # Build the project
 #COPY --from=builder /app/out/full/ .
-#RUN pnpm --filter=@uefora/gateway run prisma:dbpull
-#RUN pnpm --filter=@uefora/gateway run prisma:generate
-RUN pnpm --filter=@uefora/gateway run build
+#RUN pnpm --filter=@kulu/gateway run prisma:dbpull
+#RUN pnpm --filter=@kulu/gateway run prisma:generate
+RUN pnpm --filter=@kulu/gateway run build
 
 
 FROM node:18.12.1-bullseye-slim AS runner
