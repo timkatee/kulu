@@ -30,9 +30,13 @@ It's **simplistic**, and with it comes an implementation informed by different e
 
 1. Clone Kulu repository <br>```git clone https://github.com/timkatee/kulu.git```
 2. Install dependencies <br>```pnpm install```
-3. Create .env file in the root dir and add prisma database config, if mysql <br> ```DATABASE_URL='mysql://username:password@localhost:3306/database'```
-   ```PRISMA_DATA_MODEL_PATH='./src/infrastructure/database/prisma/schema.prisma'```
-4. Run migrations for database table creation, for an existing database with tables refer to [Prisma Documentation](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-postgres) <br> ```npx prisma migrate dev```
+3. Create .env file in the admin dir and add prisma database config with specified path to the schema.prisma fileand Database URL, if mysql <br> ```DATABASE_URL='mysql://username:password@localhost:3306/database'```
+   ```PRISMA_DATA_MODEL_PATH='./apps/admin/src/infrastructure/database/prisma/schema.prisma'```
+4. Update prisma shcema in package.json under admin dir to use ```./apps/admin/src/infrastructure/database/prisma/schema.prisma```
+5. If you don't want to stress with updating package.json, you can run migrations explicity with command and path: ```npx prisma migrate dev --schema=./apps/admin/src/infrastructure/database/prisma/schema.prisma``` otherwise, go to number 6 below
+6. Run migrations for database table creation, for an existing database with tables refer to [Prisma Documentation](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-postgres) <br> ```npx prisma migrate dev```
+7. Install turbo globally using ```npm install turbo -g```
+8. Run ```turbo prisma:generate```
 5. Start the admin service <br> ```turbo run start:dev --filter=@kulu/admin``` (you can use pnpm as well, using turbo just for the sake of it...)
 6. Start the gateway service <br> ```turbo run start:dev --filter=@kulu/gateway```(you can use pnpm as well, using turbo just for the sake of it...)
 7. Access the project on http://localhost:4000/graphql . Port might be different based on your .env PORT value.
